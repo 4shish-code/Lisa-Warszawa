@@ -1,0 +1,190 @@
+{% comment %}
+  Collection Tabs Section
+  Lets merchant add multiple tabs (links) through blocks.
+{% endcomment %}
+
+<div class="dondead_collection__tabs dondead_collection_el">
+  {% for block in section.blocks %}
+    <a 
+      class="dondead_collection__tab_item {% if block.settings.link == request.path %}dondead_collection__tab_item_active{% endif %}"
+      href="{{ block.settings.link }}"
+    >
+      {{ block.settings.label }}
+    </a>
+  {% endfor %}
+</div>
+
+<style>
+.dondead_collection__tabs {
+  background: #f2f2f2b0;
+}
+.dondead_collection__tabs.dondead_collection_el {
+  display: flex;
+}
+.dondead_collection__tabs {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: safe center;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0 20px;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.impHide {
+  display: none !important;
+}
+.dondead_collection__tabs::-webkit-scrollbar {
+  display: none !important;
+}
+
+.dondead_collection__tabs .dondead_collection__tab_item {
+  padding: 20px 16px 18px;
+  white-space: nowrap;
+  border-bottom: solid 2px transparent;
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 16px;
+  letter-spacing: 0;
+  text-align: center;
+  text-transform: uppercase;
+  transition: all 200ms ease;
+}
+
+.dondead_collection__tabs .dondead_collection__tab_item:hover:not(.dondead_collection__tab_item_active) {
+  border-color: rgba(0, 0, 0, 0.5);
+  color: black;
+  cursor: pointer;
+}
+
+.dondead_collection__tabs .dondead_collection__tab_item.dondead_collection__tab_item_active {
+  border-color: black;
+  color: black;
+  cursor: default;
+}
+
+@media screen and (max-width: 750px) {
+  .dondead_collection__tabs {
+    justify-content: flex-start;
+  }
+}
+
+@media only screen and (max-width: 750px){
+  .dondead_collection__tabs .dondead_collection__tab_item {
+    padding: 12px 10px 10px;
+    color: #00000080;
+    font-size: 12px;
+    transition: all .2s ease;
+  }
+  .dondead_collection__tabs.dondead_collection_el {
+    display: flex;
+    padding-left: 12px!important;
+  }
+}
+</style>
+
+{% schema %}
+{
+  "name": "Collection Tabs",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "tab",
+      "name": "Tab",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Tab Label",
+          "default": "Collection"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Tab Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collection Tabs",
+      "blocks": [
+        {
+          "type": "tab",
+          "settings": {
+            "label": "Kleider",
+            "link": "/collections/kleider"
+          }
+        },
+        {
+          "type": "tab",
+          "settings": {
+            "label": "Sandalen",
+            "link": "/collections/sandalen"
+          }
+        },
+        {
+          "type": "tab",
+          "settings": {
+            "label": "Taschen",
+            "link": "/collections/taschen"
+          }
+        },
+        {
+          "type": "tab",
+          "settings": {
+            "label": "Blusen",
+            "link": "/collections/blusen"
+          }
+        },
+        {
+          "type": "tab",
+          "settings": {
+            "label": "Sets",
+            "link": "/collections/sets"
+          }
+        },
+        {
+          "type": "tab",
+          "settings": {
+            "label": "Schmuck",
+            "link": "/collections/schmuck"
+          }
+        },
+        {
+          "type": "tab",
+          "settings": {
+            "label": "Pullover & Cardigan",
+            "link": "/collections/pullover-cardigan"
+          }
+        },
+        {
+          "type": "tab",
+          "settings": {
+            "label": "Jacken & Mäntel",
+            "link": "/collections/jacken-mantel"
+          }
+        },
+        {
+          "type": "tab",
+          "settings": {
+            "label": "Hosen",
+            "link": "/collections/hosen"
+          }
+        },
+        {
+          "type": "tab",
+          "settings": {
+            "label": "Schuhe",
+            "link": "/collections/schuhe"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
